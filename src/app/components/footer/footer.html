@@ -1,1 +1,19 @@
-<p>footer works!</p>
+<footer class="mt-10">
+    <nav class=" flex flex-row justify-between items-center bg-slate-700 py-2 px-9 text-white">
+        <div class="font-primary text-lg flex flex-col gap-10">
+            <a routerLink="/" routerLinkActive="active">Home</a>
+            <a routerLink="/movies" routerLinkActive="active">Movies</a>
+            <a routerLink="/about" routerLinkActive="active">Series</a>
+        </div>
+        <div class=" font-primary text-lg text-center flex flex-col gap-10">
+            <a routerLink="/contact" routerLinkActive="active">Contact</a>
+            <a routerLink="/about" routerLinkActive="active">About</a>
+            <a routerLink="/about" routerLinkActive="active">Help</a>
+
+        </div>
+        <div class=" font-primary text-xl flex flex-col gap-10">
+            <button class="bg-amber-500 border-2 rounded-md px-2 py-0.5" routerLink="/login" routerLinkActive="active">Login</button>
+            <button class=" bg-amber-500 border-2 rounded-md px-2 py-0.5" routerLink="/register" routerLinkActive="active">Register</button>
+        </div>
+    </nav>
+</footer>

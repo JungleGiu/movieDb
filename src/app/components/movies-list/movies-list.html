@@ -1,4 +1,4 @@
-<section class="movies-list">
+<section class="flex flex-row  justify-center flex-wrap gap-5">
   @for (movie of movies(); track movie.id){
   <app-movie-card [movie]="movie"> </app-movie-card>
 }

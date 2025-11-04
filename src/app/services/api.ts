@@ -17,6 +17,7 @@ export class Api {
       },
     }) as Observable<TMDBresponse>;
   }
+
 }
 export type TMDBresponse = {
   page: number;

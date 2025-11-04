@@ -1,13 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { Movie } from '../../models/movie';
+import { RouterLink } from "@angular/router";
 @Component({
   selector: 'app-movie-card',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './movie-card.html',
   styleUrl: './movie-card.css',
 })
 export class MovieCard {
   @Input({required : true}) movie!: Movie ;
 
-  baseUrl = 'https://image.tmdb.org/t/p/w500/';
+  baseUrl = 'https://image.tmdb.org/t/p/w300/';
 }
