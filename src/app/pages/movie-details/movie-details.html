@@ -1,1 +1,36 @@
-<img src="{{this.baseUrl + movie.poster_path}}" alt="movie poster">
+<div class="flex justify-center flex-row gap-10 bg">
+  <hgroup class="w-1/2 flex flex-col justify-center gap-5">
+    <h1 class="font-secondary text-7xl text-white">{{ movie().title }}</h1>
+    <p class="font-primary text-xl text-white"><span class="font-extrabold">Release Date:</span> {{ movie().release_date|date }}</p>
+    <p class="font-primary text-xl text-white"><span class="font-extrabold">Rating:</span> {{ movie().vote_average }}</p>
+    <p class="font-primary text-xl text-white"><span class="font-extrabold">Budget:</span> {{ movie().budget }} $</p>
+
+    <p class="font-primary text-lg text-white"><span class="font-extrabold">Sinopsis:</span> {{ movie().overview }}</p>
+    <p class="font-primary text-lg text-white"><span class="font-extrabold">Original Language:</span> {{ movie().original_language }}</p>
+    <ul class="font-primary text-white flex flex-row gap-2 text-lg">
+      <span class="font-extrabold">Genres :</span> @for (genre of movie().genres; track genre.id){
+
+      <li class="bg-amber-500 text-white border-2 rounded-md px-2">
+        {{ genre.name }}
+      </li>
+      }
+    </ul>
+    <ul class="font-primary text-white flex flex-row gap-2 text-lg">
+      <span class="font-extrabold">Production Companies : </span>@for (company of movie().production_companies; track company.id){
+
+      <li class="bg-amber-500 text-white border-2 rounded-md px-2">
+        {{ company.name }}
+      </li>
+      }
+    </ul>
+    <ul class="font-primary text-white flex flex-row gap-2 text-lg">
+      <span class="font-extrabold">Production Countries :</span> @for (country of movie().production_countries; track country.id){
+
+      <li class="bg-amber-500 text-white border-2 rounded-md px-2">
+        {{ country.name }}
+      </li>
+      }
+    </ul>
+  </hgroup>
+  <img class="w-1/3" [src]="this.baseUrl + movie().poster_path" [alt]="movie().title + 'poster'" />
+</div>

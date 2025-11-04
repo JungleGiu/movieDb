@@ -18,6 +18,14 @@ export class Api {
     }) as Observable<TMDBresponse>;
   }
 
+  getMovie(url: string) {
+    return this.http.get( url, {
+        headers: {
+          Authorization: 'Bearer ' + environment.tmdb.accessToken,
+        },
+      }
+    ) as Observable<Movie>;
+  }
 }
 export type TMDBresponse = {
   page: number;

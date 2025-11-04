@@ -1,4 +1,9 @@
 <article>
-    <img [src]="this.baseUrl + movie.poster_path" [alt]="movie.title + 'poster'">
-    <a routerLink="movie/{{ movie.id }}" routerLinkActive="active" [state]="movie" class="absolute text-amber-500 border-2 px-2 bg-slate-700 border-white rounded-md shadow-lg -translate-y-11/12 font-secondary text-2xl font-extrabold">{{ movie.title }}</a>
+  <img [src]="this.baseUrl + movie.poster_path" [alt]="movie.title + 'poster'" />
+  <a
+    routerLink="movie/{{ movie.id }}"
+    
+    class="absolute text-amber-400 border-2 px-2 bg-slate-700 border-white rounded-md shadow-lg -translate-y-11/12 font-secondary text-2xl font-extrabold hover:scale-105 hover:bg-slate-600 duration-300 ease-in-out"
+    >{{ movie.title }}</a
+  >
 </article>
