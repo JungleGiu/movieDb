@@ -1,21 +1,26 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../env';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Movie } from '../models/movie';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class Api {
-  
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   get(url: string) {
-    return this.http.get( url, {
+    return this.http.get(url, {
       headers: {
-        'Authorization': 'Bearer ' + environment.tmdb.accessToken
-      }
-    });
+        Authorization: 'Bearer ' + environment.tmdb.accessToken,
+      },
+    }) as Observable<TMDBresponse>;
   }
 }
+export type TMDBresponse = {
+  page: number;
+  results: Movie[];
+  total_pages: number;
+  total_results: number;
+};

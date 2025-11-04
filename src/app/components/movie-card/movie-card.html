@@ -1,1 +1,5 @@
-<p>movie-card works!</p>
+<article>
+    <img [src]="this.baseUrl + movie.poster_path" [alt]="movie.title">
+    <h2>{{ movie.title }}</h2>
+    <p>{{ movie.overview }}</p> 
+</article>

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-
+import { Component, Input } from '@angular/core';
+import { Movie } from '../../models/movie';
 @Component({
   selector: 'app-movie-card',
   imports: [],
@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './movie-card.css',
 })
 export class MovieCard {
+  @Input({required : true}) movie!: Movie ;
 
+  baseUrl = 'https://image.tmdb.org/t/p/w500/';
 }
