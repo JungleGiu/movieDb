@@ -21,7 +21,7 @@ export class MovieDetails implements OnInit {
   ngOnInit() {
       this.id = this.route.snapshot.paramMap.get('id');
       const url = `https://api.themoviedb.org/3/movie/${this.id}?language=en-US`;
-      this.apiCall.getMovie(url).subscribe((movie: Movie) => (this.movie.update(() => movie)));
+      this.apiCall.getMoviebyId(url).subscribe((movie: Movie) => (this.movie.update(() => movie)));
     }
   }
 

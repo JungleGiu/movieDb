@@ -1,5 +1,15 @@
-<section class="flex flex-row  justify-center flex-wrap gap-5">
-  @for (movie of movies(); track movie.id){
-  <app-movie-card [movie]="movie"> </app-movie-card>
+<section class="flex flex-col  justify-center  gap-10">
+  <div class="flex flex-row  justify-center flex-wrap gap-5">
+    
+    @for (movie of movies(); track movie.id){
+    <app-movie-card [movie]="movie"> </app-movie-card>
+    }
+  </div>
+@if (moviesResponse()){
+<div class=" flex justify-center">
+  <app-pagination (pageChange)="onNext()" [results]="moviesResponse()!" [url]="topRatedUrl">
+  
+  </app-pagination>
+</div>
 }
 </section>
