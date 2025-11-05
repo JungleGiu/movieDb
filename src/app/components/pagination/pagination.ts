@@ -1,4 +1,4 @@
-import { Component, Input , Output, inject, EventEmitter} from '@angular/core';
+import { Component, Input , Output, inject, EventEmitter, WritableSignal} from '@angular/core';
 import { TMDBresponse, Api } from '../../services/api';
 
 @Component({
@@ -9,7 +9,7 @@ import { TMDBresponse, Api } from '../../services/api';
 })
 export class Pagination {
 @Input({required : true}) results!: TMDBresponse
-@Input({required : true}) url!: string
+@Input({required : true}) url!:WritableSignal<string> | string
 @Output() pageChange = new EventEmitter<number>();
 
 apiCall = inject(Api)
@@ -29,10 +29,10 @@ ngOnInit() {
 
 
 
-nextPage(page: number) {
+nextPage() {
   if (this.page < this.totalPages) {
     this.page++;
-    this.pageChange.emit(page);
+    this.pageChange.emit(this.page);
   }
 }
 }

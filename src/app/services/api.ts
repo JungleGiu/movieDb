@@ -27,20 +27,20 @@ export class Api {
     ) as Observable<Movie>;
   }
 
-  paginateList(url: string) {
-    const regex = /&page=/gm;
-    if (regex.test(url)) {
-      const indexRegex = url.indexOf('page=');
-      const numIndex = indexRegex + 5;
-      url = url.replace( url[numIndex], (Number(url[numIndex]) + 1).toString());
-    }
-    return this.http.get(url, {
+  paginateList(url: string, page: number) {
+    const newUrl = this.changePageInUrl(url, page);
+    return this.http.get(newUrl, {
       headers: {
         Authorization: 'Bearer ' + environment.tmdb.accessToken,
       },
     }) as Observable<TMDBresponse>;
   }
-
+  
+  changePageInUrl(url: string , page : number){
+   const urlobj = new URL(url);
+   urlobj.searchParams.set('page', page.toString());
+   return urlobj.toString();
+  }
 }
 export type TMDBresponse = {
   page: number;

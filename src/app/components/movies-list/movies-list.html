@@ -7,7 +7,7 @@
   </div>
 @if (moviesResponse()){
 <div class=" flex justify-center">
-  <app-pagination (pageChange)="onNext()" [results]="moviesResponse()!" [url]="topRatedUrl">
+  <app-pagination (pageChange)="onNext($event)" [results]="moviesResponse()!" [url]="currentUrl()">
   
   </app-pagination>
 </div>
