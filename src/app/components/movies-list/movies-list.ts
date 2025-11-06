@@ -1,47 +1,66 @@
-import { Component, inject, signal, WritableSignal } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Api , TMDBresponse} from '../../services/api';
+import { Component, inject, signal, Input, OnInit } from '@angular/core';
+
+import { Api, TMDBresponse } from '../../services/api';
 import { Movie } from '../../models/movie';
 import { MovieCard } from '../movie-card/movie-card';
 import { Pagination } from '../pagination/pagination';
+import { Tvserie } from '../../models/tvserie';
+import { CrewcastMember } from '../../models/crewcast-member';
+
 @Component({
   selector: 'app-movies-list',
   imports: [MovieCard, Pagination],
   templateUrl: './movies-list.html',
   styleUrl: './movies-list.css',
 })
-export class MoviesList {
+export class MoviesList implements OnInit {
+  @Input({ required: true }) originalUrl!: string;
+  @Input({ required: true }) type!: ListType;
   apiCall = inject(Api);
-  topRatedUrl =
-    'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=vote_average.desc&without_genres=99,10755&vote_count.gte=200';
-  currentUrl = signal(this.topRatedUrl);
-    movies = signal<Movie[]>([]);
-
+  currentUrl = signal('');
+  movies = signal<Movie[]>([]);
+  tvseries = signal<Tvserie[]>([]);
+  castcrew = signal<CrewcastMember[]>([]);
   moviesResponse = signal<TMDBresponse | null>(null);
   actualPage = signal(1);
-  constructor() {
-    this.loadMovies();
 
+  ngOnInit() {
+    this.currentUrl.set(this.originalUrl);
+    this.loadMovies();
   }
 
   loadMovies() {
     this.apiCall.getList(this.currentUrl()).subscribe({
       next: (response) => {
-
         this.moviesResponse.set(response);
         this.actualPage.set(response.page);
-        this.movies.set(response.results);
+        if (this.type === 'movie') {
+          this.movies.set(response.results as Movie[]);
+        }
+        if (this.type === 'series') {
+          this.tvseries.set(response.results as Tvserie[]);
+        }
+        if (this.type === 'castcrew') {
+          this.castcrew.set(response.results as CrewcastMember[]);
+        }
       },
-      error: (error) => {
+      error: (error: Error) => {
         console.error('Error loading movies:', error);
       },
     });
   }
 
-  onNext( page: number) {
-      const newUrl = this.apiCall.changePageInUrl(this.currentUrl(), page);
+  onNext(page: number) {
+    const newUrl = this.apiCall.changePageInUrl(this.currentUrl(), page);
     this.currentUrl.set(newUrl);
     this.loadMovies();
+  }
+
+  onPrevious(page: number) {
+    const newUrl = this.apiCall.changePageInUrl(this.currentUrl(), page);
+    this.currentUrl.set(newUrl);
+    this.loadMovies();
+  }
 }
 
-}
+export type ListType = 'movie' | 'series' | 'castcrew';

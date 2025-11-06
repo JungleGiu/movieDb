@@ -6,6 +6,24 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/landing/landing').then(m => m.Landing)
   },
   {
+    path: 'tvseries',
+    loadComponent: () => import('./pages/series/series').then(m => m.Series)
+  },
+  // {
+  //   path: 'tvseries/:id',
+  //   loadComponent: () => import('./pages/series-details/series-details').then(m => m.SeriesDetails)
+  // },
+  
+  {
+    path:'castandcrew',
+    loadComponent: () => import('./pages/cast-crew/cast-crew').then(m => m.CastCrew)
+  },
+
+  // {
+  //   path: 'movies',
+  //   loadComponent: () => import('./pages/movies/movies').then(m => m.Movies)
+  // },
+  {
     path: 'movie/:id',
     loadComponent: () => import('./pages/movie-details/movie-details').then(m => m.MovieDetails)
   },

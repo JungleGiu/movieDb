@@ -1,1 +1,33 @@
-<span>{{page}}</span> <button (click)="nextPage()">Next</button>
+<div class="flex flex-row gap-4 align-bottom text-white">
+  @if (page > 1){
+  <button
+    class="bg-amber-500 border-2 rounded-md px-2 py-0.5 hover:scale-105 hover:bg-slate-600 duration-300 ease-in-out"
+    (click)="previousPage()"
+  >
+    Previous
+  </button>
+  }
+
+
+@for (p of pagesToDisplay(pages, page); track p) {
+ @if (p != page){
+  <button
+    class="bg-amber-500 border-2 rounded-md px-2 py-0.5 hover:scale-105 hover:bg-slate-600 duration-300 ease-in-out"
+    (click)="changePage(p)"
+  >
+    {{ p }}
+  </button>
+ }
+ @else {
+    <p class="text-amber-500 border-2 rounded-md px-2 py-0.5">{{ p }}</p>
+ }
+}
+
+    
+  <button
+    class="bg-amber-500 border-2 rounded-md px-2 py-0.5 hover:scale-105 hover:bg-slate-600 duration-300 ease-in-out"
+    (click)="nextPage()"
+  >
+    Next
+  </button>
+</div>

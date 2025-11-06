@@ -1,0 +1,31 @@
+import { Genre } from './movie';
+import { CastCrew } from '../pages/cast-crew/cast-crew';
+export interface Tvserie {
+  backdrop_path: string;
+  first_air_date: string;
+  genre_ids: Genre[];
+  id: number;
+  name: string;
+  origin_country: string[];
+  original_language: string;
+  original_name: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  vote_average: number;
+  vote_count: number;
+  created_by?: CastCrew[];
+  episode_run_time?: number[];
+  in_production: boolean;
+  last_air_date: string;
+  next_episode_to_air: any;
+  networks: any[];
+  number_of_episodes: number;
+  number_of_seasons: number;
+  production_companies: any[];
+  production_countries: any[];
+  seasons: any[];
+  status: string;
+  type: string;
+  genres: Genre[];
+}

@@ -3,6 +3,8 @@ import { environment } from '../../env';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Movie } from '../models/movie';
+import { Tvserie } from '../models/tvserie';
+import { CrewcastMember } from '../models/crewcast-member';
 
 @Injectable({
   providedIn: 'root',
@@ -44,7 +46,7 @@ export class Api {
 }
 export type TMDBresponse = {
   page: number;
-  results: Movie[];
+  results: Movie[] | Tvserie[] | CrewcastMember[];
   total_pages: number;
   total_results: number;
 };

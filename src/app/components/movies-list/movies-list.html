@@ -1,8 +1,19 @@
 <section class="flex flex-col  justify-center  gap-10">
   <div class="flex flex-row  justify-center flex-wrap gap-5">
-    
+  @if (type == 'movie'){
     @for (movie of movies(); track movie.id){
     <app-movie-card [movie]="movie"> </app-movie-card>
+    }}
+    @if (type == 'series'){
+     @for (serie of tvseries(); track serie.id){
+     <app-movie-card [serie]="serie"> </app-movie-card>
+     } 
+    }
+
+    @if (type == 'castcrew'){
+      @for (castcrew of castcrew(); track castcrew.id){
+        <app-movie-card  [castcrew]="castcrew"> </app-movie-card>
+      }
     }
   </div>
 @if (moviesResponse()){
