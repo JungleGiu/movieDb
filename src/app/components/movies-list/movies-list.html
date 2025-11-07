@@ -1,5 +1,10 @@
 <section class="flex flex-col  justify-center  gap-10">
+
+  
   <div class="flex flex-row  justify-center flex-wrap gap-5">
+    @if (type == 'thumbnails'){
+      <app-thumbnails [movies]="movies()"></app-thumbnails>
+    }
   @if (type == 'movie'){
     @for (movie of movies(); track movie.id){
     <app-movie-card [movie]="movie"> </app-movie-card>
@@ -16,7 +21,7 @@
       }
     }
   </div>
-@if (moviesResponse()){
+@if (moviesResponse() && type != 'thumbnails'){
 <div class=" flex justify-center">
   <app-pagination (pageChange)="onNext($event)" [results]="moviesResponse()!" [url]="currentUrl()">
   

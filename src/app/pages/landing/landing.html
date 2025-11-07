@@ -1,3 +1,29 @@
-<main class="bg-slate-600">
-    <app-movies-list [type]="type" [originalUrl]="topRatedURL"></app-movies-list>
+<main class="relative min-h-screen">
+
+    <div class="absolute inset-0 z-0 overflow-hidden">
+        <app-movies-list class="opacity-60 blur-[1px] scale-105" [type]="type" [originalUrl]="topRatedURL"></app-movies-list>
+    </div>
+    
+
+    <div class="relative z-10 flex flex-col items-center justify-center min-h-screen gap-8 px-4">
+        <div class="backdrop-blur-md bg-black/40 rounded-3xl p-12 border border-white/10">
+            <hgroup class="w-full max-w-2xl flex flex-col justify-center items-center text-center gap-5">
+                <h1 class="font-secondary text-7xl text-white">
+                    Welcome to the MovieDatabase
+                </h1>
+                <p class="font-primary text-xl text-white/90">
+                    Check out our top-rated movies and TV series, subscribe to access the full catalog.
+                </p>
+            </hgroup>
+            
+            <div class="flex flex-row justify-center gap-5 mt-8">
+                <button class="bg-amber-500 text-white border-2 border-amber-400 rounded-md px-6 py-3 hover:scale-105 hover:bg-slate-600 transition-all duration-300 ease-in-out shadow-xl">
+                    Login
+                </button>
+                <button class="bg-amber-500 text-white border-2 border-amber-400 rounded-md px-6 py-3 hover:scale-105 hover:bg-slate-600 transition-all duration-300 ease-in-out shadow-xl">
+                    Register
+                </button>
+            </div>
+        </div>
+    </div>
 </main>

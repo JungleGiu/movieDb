@@ -1,15 +1,15 @@
 import { Component, inject, signal, Input, OnInit } from '@angular/core';
-
 import { Api, TMDBresponse } from '../../services/api';
 import { Movie } from '../../models/movie';
 import { MovieCard } from '../movie-card/movie-card';
+import { Thumbnails } from '../thumbnails/thumbnails';
 import { Pagination } from '../pagination/pagination';
 import { Tvserie } from '../../models/tvserie';
 import { CrewcastMember } from '../../models/crewcast-member';
 
 @Component({
   selector: 'app-movies-list',
-  imports: [MovieCard, Pagination],
+  imports: [MovieCard, Pagination, Thumbnails],
   templateUrl: './movies-list.html',
   styleUrl: './movies-list.css',
 })
@@ -34,7 +34,7 @@ export class MoviesList implements OnInit {
       next: (response) => {
         this.moviesResponse.set(response);
         this.actualPage.set(response.page);
-        if (this.type === 'movie') {
+        if (this.type === 'movie'|| this.type === 'thumbnails') {
           this.movies.set(response.results as Movie[]);
         }
         if (this.type === 'series') {
@@ -63,4 +63,4 @@ export class MoviesList implements OnInit {
   }
 }
 
-export type ListType = 'movie' | 'series' | 'castcrew';
+export type ListType = 'movie' | 'series' | 'castcrew' | 'thumbnails';

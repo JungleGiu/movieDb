@@ -1,6 +1,6 @@
 <article>
   @if (movie){
-  <img [src]="this.baseUrl + movie.poster_path" [alt]="movie.title + 'poster'" />
+  <img class="rounded-lg" [src]="this.baseUrl + movie.poster_path" [alt]="movie.title + 'poster'" />
   } @if (castcrew){
   <img [src]="this.baseUrl + castcrew.profile_path" [alt]="castcrew.name + 'poster'" />
   } @if (serie){
@@ -9,19 +9,19 @@
    @if(movie){
   <a
     routerLink="movie/{{ movie.id }}"
-    class="absolute text-amber-400 border-2 px-2 bg-slate-700 border-white rounded-md shadow-lg -translate-y-11/12 font-secondary text-2xl font-extrabold hover:scale-105 hover:bg-slate-600 duration-300 ease-in-out"
+    class="absolute text-amber-400 border-2 px-2 bg-slate-600 border-white rounded-md shadow-lg -translate-y-11/12 font-secondary text-2xl font-extrabold hover:scale-105 hover:bg-slate-700 duration-300 ease-in-out"
     >{{ movie.title }}</a
   >
   }
    @if(serie){
   <a
-    class="absolute text-amber-400 border-2 px-2 bg-slate-700 border-white rounded-md shadow-lg -translate-y-11/12 font-secondary text-2xl font-extrabold hover:scale-105 hover:bg-slate-600 duration-300 ease-in-out"
+    class="absolute text-amber-400 border-2 px-2 bg-slate-600 border-white rounded-md shadow-lg -translate-y-11/12 font-secondary text-2xl font-extrabold hover:scale-105 hover:bg-slate-700 duration-300 ease-in-out"
     >{{ serie.name }}</a
   >
   }
    @if(castcrew){
   <a
-    class="absolute text-amber-400 border-2 px-2 bg-slate-700 border-white rounded-md shadow-lg -translate-y-11/12 font-secondary text-2xl font-extrabold hover:scale-105 hover:bg-slate-600 duration-300 ease-in-out"
+    class="absolute text-amber-400 border-2 px-2 bg-slate-600 border-white rounded-md shadow-lg -translate-y-11/12 font-secondary text-2xl font-extrabold hover:scale-105 hover:bg-slate-700 duration-300 ease-in-out"
     >{{ castcrew.name }}</a
   >
   }

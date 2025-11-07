@@ -1,0 +1,6 @@
+<div class="flex flex-row  rounded-2xl justify-center flex-wrap">
+    @for (movie of movies; track movie.id){
+        <img class="rounded-2xl" [src]="this.baseUrl + movie.poster_path" [alt]="movie.title + 'poster'" />
+    }
+
+</div>
