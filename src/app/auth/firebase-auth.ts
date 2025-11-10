@@ -1,11 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal, Signal } from '@angular/core';
+import { Observable } from 'rxjs';
 import { initializeApp } from "firebase/app";
+
 import { environment } from '../../env';
 import { getAuth,
    onAuthStateChanged,
     createUserWithEmailAndPassword,
      signInWithEmailAndPassword,
-     signOut } from "firebase/auth";
+     signOut,
+      User } from "firebase/auth";
 @Injectable({
   providedIn: 'root'
 })
@@ -13,12 +16,28 @@ export class FirebaseAuth {
   
 firebaseApp = initializeApp(environment.firebase);
 auth = getAuth(this.firebaseApp);
-isUserLogged = onAuthStateChanged(this.auth, (user) => {
-  if(user){
-   return true;
+private _isAuthenticated = signal<boolean>(false);
+public isAuthenticated: Signal<boolean> = this._isAuthenticated.asReadonly();
+
+ private _currentUser = signal<User | null>(null);
+  public currentUser: Signal<User | null> = this._currentUser.asReadonly();
+
+constructor() {
+  onAuthStateChanged(this.auth, (user) => {
+    this._currentUser.set(user);
+    this._isAuthenticated.set(user !== null);
+     console.log('Auth state changed:', user ? 'logged in' : 'logged out');
+  });
+}
+
+waitForAuthState(): Promise<User | null> {
+    return new Promise((resolve) => {
+      const unsubscribe = onAuthStateChanged(this.auth, (user) => {
+        unsubscribe();
+        resolve(user);
+      });
+    });
   }
-  return false;
-});
 
 createUser = async (email: string, password: string) =>{
   try{
