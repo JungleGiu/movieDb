@@ -28,13 +28,7 @@
     </div>
     @if (isLoggedIn()){
       <div class="font-primary text-xl flex flex-row gap-5">
-      <button
-        class="bg-amber-500 text-white border-2 border-amber-400 rounded-md px-6 py-1 hover:scale-105 hover:bg-slate-600 transition-all duration-300 ease-in-out shadow-xl"
-        routerLink="/profile"
-        routerLinkActive="active"
-      >
-        Profile
-      </button>
+   
       <button
         class="bg-amber-500 text-white border-2 border-amber-400 rounded-md px-6 py-1 hover:scale-105 hover:bg-slate-600 transition-all duration-300 ease-in-out shadow-xl"
         (click)="auth.logoutUser()"

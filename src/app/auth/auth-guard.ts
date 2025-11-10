@@ -11,10 +11,10 @@ export const authGuard: CanActivateFn = async (route,state) => {
   const user = await firebaseAuth.waitForAuthState();
   
   if (user) {
-    console.log('Utente autenticato:', user.email);
+    console.log('User authenticated:', user.email);
     return true;
   } else {
-    console.log('Utente NON autenticato, redirect a login');
+    console.log('User not authenticated, redirect to login');
     router.navigate(['/login']);
     return false;
   }
