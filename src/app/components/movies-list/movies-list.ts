@@ -34,7 +34,7 @@ export class MoviesList implements OnInit {
       next: (response) => {
         this.moviesResponse.set(response);
         this.actualPage.set(response.page);
-        if (this.type === 'movie'|| this.type === 'thumbnails') {
+        if (this.type === 'movies' || this.type === 'thumbnails') {
           this.movies.set(response.results as Movie[]);
         }
         if (this.type === 'series') {
@@ -63,4 +63,4 @@ export class MoviesList implements OnInit {
   }
 }
 
-export type ListType = 'movie' | 'series' | 'castcrew' | 'thumbnails';
+export type ListType = 'movies' | 'series' | 'castcrew' | 'thumbnails';

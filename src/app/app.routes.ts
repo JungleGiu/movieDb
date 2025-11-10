@@ -29,7 +29,7 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/movies/movies').then((m) => m.Movies),
   },
   {
-    path: 'movie/:id',
+    path: 'movies/:id',
     loadComponent: () => import('./pages/movie-details/movie-details').then((m) => m.MovieDetails),
   },
   {

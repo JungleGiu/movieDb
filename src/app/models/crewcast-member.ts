@@ -1,3 +1,4 @@
+import { Series } from '../pages/series/series';
 import { Movie } from './movie';
 export interface CrewcastMember {
   adult: boolean;
@@ -8,7 +9,7 @@ export interface CrewcastMember {
   original_name: string;
   popularity: number;
   profile_path: string;
-  known_for: Movie[];
+  known_for: any[]
   biography?: string;
   birthday?: string;
   deathday?: string | null;

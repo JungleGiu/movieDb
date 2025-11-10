@@ -5,7 +5,7 @@
     @if (type == 'thumbnails'){
       <app-thumbnails [movies]="movies()"></app-thumbnails>
     }
-  @if (type == 'movie'){
+  @if (type == 'movies'){
     @for (movie of movies(); track movie.id){
     <app-movie-card [movie]="movie"> </app-movie-card>
     }}

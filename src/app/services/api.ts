@@ -29,6 +29,23 @@ export class Api {
     ) as Observable<Movie>;
   }
 
+   getCastCrewbyId(url: string) {
+    return this.http.get( url, {
+        headers: {
+          Authorization: 'Bearer ' + environment.tmdb.accessToken,
+        },
+      }
+    ) as Observable<CrewcastMember>;
+   }
+
+   getTvseriesbyId(url: string) {
+    return this.http.get( url, {
+        headers: {
+          Authorization: 'Bearer ' + environment.tmdb.accessToken,
+        },
+      }
+    ) as Observable<Tvserie>;
+   }
   paginateList(url: string, page: number) {
     const newUrl = this.changePageInUrl(url, page);
     return this.http.get(newUrl, {
