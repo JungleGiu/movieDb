@@ -48,6 +48,7 @@ export class FirebaseAuth {
     try {
       const userCredentials = await createUserWithEmailAndPassword(this.auth, email, password);
       console.log('User created', userCredentials.user);
+      this.router.navigate(['/movies']);
     } catch (error : any) {
        this.onError.emit(error.code);
        console.log(error);
