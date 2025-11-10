@@ -1,16 +1,25 @@
-<div class="flex justify-center  h-screen flex-row gap-10" >
+<div  class="flex justify-center  h-screen flex-row gap-10" >
     <form class="flex flex-col justify-center gap-5" (submit)="onSubmit()" [formGroup]="loginForm">
         <h1 class="font-secondary text-7xl text-white">Login</h1>
         <div class="flex flex-col gap-2">
-            
             <label class="font-primary text-xl text-white" for="email">Email</label>
+            @let email = loginForm.controls.email;
             <input class="bg-slate-600 text-white border-2 rounded-md px-2" type="email" formControlName="email" placeholder="Email">
+            @if (email.invalid && email.touched){
+                <span class="text-red-500 text-sm">Valid Email is required</span>
+            }
         </div>    
         <div class="flex flex-col gap-2">
             <label class="font-primary text-xl text-white" for="password">Password</label>
+            @let password = loginForm.controls.password;
             <input class="bg-slate-600 text-white border-2 rounded-md px-2" type="password" formControlName="password" placeholder="Password">
+            @if (password.invalid && password.touched){
+                <span class="text-red-500 text-sm">Valid Password is required</span>
+            }
         </div>    
         <button class="bg-amber-500 text-white border-2 rounded-md px-2" type="submit" >Login</button>
+        @if (error){
+            <span class="text-red-500 text-sm">{{ error | errorTranslate }}</span>
+        }
     </form >
-          
 </div>
