@@ -3,9 +3,11 @@ import { DatePipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Movie } from '../../models/movie';
 import { Api } from '../../services/api';
+import { NationalityTranslatePipe } from '../../pipes/nationality-translate-pipe';
+import { LanguagesTranslatePipe } from '../../pipes/languages-translate-pipe';
 @Component({
   selector: 'app-movie-details',
-  imports: [DatePipe],
+  imports: [DatePipe , NationalityTranslatePipe, LanguagesTranslatePipe],
   templateUrl: './movie-details.html',
   styleUrl: './movie-details.css',
 })

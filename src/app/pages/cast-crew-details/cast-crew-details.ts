@@ -6,7 +6,7 @@ import {CrewcastMember} from '../../models/crewcast-member';
 
 @Component({
   selector: 'app-cast-crew-details',
-  imports: [DatePipe],
+  imports: [DatePipe ],
   templateUrl: './cast-crew-details.html',
   styleUrl: './cast-crew-details.css',
 })

@@ -6,7 +6,7 @@
     <p class="font-primary text-xl text-white"><span class="font-extrabold">Budget:</span> {{ movie().budget }} $</p>
 
     <p class="font-primary text-lg text-white"><span class="font-extrabold">Sinopsis:</span> {{ movie().overview }}</p>
-    <p class="font-primary text-lg text-white"><span class="font-extrabold">Original Language:</span> {{ movie().original_language }}</p>
+    <p class="font-primary text-lg text-white"><span class="font-extrabold">Original Language:</span> {{ movie().original_language | languagesTranslate }}</p>
     <ul class="font-primary text-white flex flex-row gap-2 text-lg">
       <span class="font-extrabold">Genres :</span> @for (genre of movie().genres; track genre.id){
 
@@ -27,7 +27,7 @@
       <span class="font-extrabold">Production Countries :</span> @for (country of movie().production_countries; track country.id){
 
       <li class="bg-amber-500 text-white border-2 rounded-md px-2">
-        {{ country.name }}
+        {{ country.name | nationalityTranslate}}
       </li>
       }
     </ul>

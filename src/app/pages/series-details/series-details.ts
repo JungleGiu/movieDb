@@ -4,9 +4,11 @@ import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { Api } from '../../services/api';
 import { Tvserie } from '../../models/tvserie';
+import { NationalityTranslatePipe } from '../../pipes/nationality-translate-pipe';
+import { LanguagesTranslatePipe } from '../../pipes/languages-translate-pipe';
 @Component({
   selector: 'app-series-details',
-  imports: [DatePipe],
+  imports: [DatePipe, NationalityTranslatePipe, LanguagesTranslatePipe],
   templateUrl: './series-details.html',
   styleUrl: './series-details.css',
 })
