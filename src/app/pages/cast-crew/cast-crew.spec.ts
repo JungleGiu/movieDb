@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CastCrew } from './cast-crew';
+import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('CastCrew', () => {
   let component: CastCrew;
@@ -8,7 +9,10 @@ describe('CastCrew', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CastCrew]
+      imports: [CastCrew],
+      providers: [
+        provideZonelessChangeDetection()
+      ]
     })
     .compileComponents();
 

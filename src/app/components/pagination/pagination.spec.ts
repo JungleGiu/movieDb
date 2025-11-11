@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { provideZonelessChangeDetection } from '@angular/core';
 import { Pagination } from './pagination';
 
 describe('Pagination', () => {
@@ -8,7 +8,10 @@ describe('Pagination', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Pagination]
+      imports: [Pagination],
+      providers: [
+        provideZonelessChangeDetection()
+      ]
     })
     .compileComponents();
 

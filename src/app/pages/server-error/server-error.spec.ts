@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { provideZonelessChangeDetection } from '@angular/core';
 import { ServerError } from './server-error';
 
 describe('ServerError', () => {
@@ -8,7 +8,10 @@ describe('ServerError', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ServerError]
+      imports: [ServerError],
+      providers: [
+        provideZonelessChangeDetection()
+      ]
     })
     .compileComponents();
 

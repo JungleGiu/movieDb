@@ -1,5 +1,3 @@
-import { Series } from '../pages/series/series';
-import { Movie } from './movie';
 export interface CrewcastMember {
   adult: boolean;
   gender: number;
