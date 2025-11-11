@@ -1,4 +1,5 @@
 import { Component, inject, signal, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Api, TMDBresponse } from '../../services/api';
 import { Movie } from '../../models/movie';
 import { MovieCard } from '../movie-card/movie-card';
@@ -24,6 +25,8 @@ export class MoviesList implements OnInit {
   moviesResponse = signal<TMDBresponse | null>(null);
   actualPage = signal(1);
 
+
+
   ngOnInit() {
     this.currentUrl.set(this.originalUrl);
     this.loadMovies();
@@ -45,6 +48,7 @@ export class MoviesList implements OnInit {
         }
       },
       error: (error: Error) => {
+  
         console.error('Error loading movies:', error);
       },
     });

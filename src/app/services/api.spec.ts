@@ -101,7 +101,7 @@ it('should paginate results lists correctly', () => {
   service.paginateList(urlwithpage, 2).subscribe((response) => {
     expect(response).toEqual(mockTMDBresponse);
   });
-  const req = httpMock.expectOne(urlwithpage);
+  const req = httpMock.expectOne(newpage);
   expect(req.request.method).toBe('GET');
   req.flush(mockTMDBresponse);
  
