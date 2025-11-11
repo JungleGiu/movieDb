@@ -1,5 +1,5 @@
 import { Genre } from './movie';
-import { CastCrew } from '../pages/cast-crew/cast-crew';
+import { CrewcastMember } from './crewcast-member';
 export interface Tvserie {
   backdrop_path: string;
   first_air_date: string;
@@ -14,7 +14,7 @@ export interface Tvserie {
   poster_path: string;
   vote_average: number;
   vote_count: number;
-  created_by?: CastCrew[];
+  created_by?: CrewcastMember[];
   episode_run_time?: number[];
   in_production: boolean;
   last_air_date: string;
