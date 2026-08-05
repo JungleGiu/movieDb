@@ -6,11 +6,14 @@ import { Thumbnails } from '../thumbnails/thumbnails';
 import { Pagination } from '../pagination/pagination';
 import { Tvserie } from '../../../core/models/tvserie';
 import { CrewcastMember } from '../../../core/models/crewcast-member';
+import { SearchBar } from "../search-bar/search-bar";
 
 export type ListType = 'movies' | 'series' | 'castcrew' | 'thumbnails';
+
+export type MediaType = Movie[] | Tvserie[] | CrewcastMember[];
 @Component({
   selector: 'app-movies-list',
-  imports: [MovieCard, Pagination, Thumbnails],
+  imports: [MovieCard, Pagination, Thumbnails, SearchBar],
   templateUrl: './movies-list.html',
   styleUrl: './movies-list.css',
 })
@@ -60,6 +63,11 @@ export class MoviesList implements OnInit {
   onPrevious(page: number) {
     const newUrl = this.apiCall.changePageInUrl(this.currentUrl(), page);
     this.currentUrl.set(newUrl);
+    this.loadMovies();
+  }
+  onSearch(query: string|null) {
+    const searchUrl = `https://api.themoviedb.org/3/search/multi?query=${query}&api_key=2f766a36eae989850db52ff205661ef58`;
+    this.currentUrl.set(searchUrl);
     this.loadMovies();
   }
 }

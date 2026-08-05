@@ -1,5 +1,5 @@
 <section class="flex flex-col  justify-center  gap-10">
-
+<app-search-bar (search)="onSearch($event)"></app-search-bar>
   
   <div class="flex flex-row  justify-center flex-wrap gap-5">
     @if (type == 'thumbnails'){
